@@ -1,17 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Outlet,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Charges from "./routes/Charges";
+import Home from "./routes/Home";
+import OperationRecords from "./routes/OperationRecords";
+import PrintForPatients from "./routes/PrintForPatients";
+import Products from "./routes/Products";
+import Reports from "./routes/Reports";
+import Navbar from "./components/Navbar";
+import "./App.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const AppLayout = () => (
+  <React.Fragment>
+    <Navbar />
+    <Outlet />
+  </React.Fragment>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<AppLayout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/reports" element={<Reports />} />
+      <Route path="/print_for_patients" element={<PrintForPatients />} />
+      <Route path="/operation_records" element={<OperationRecords />} />
+      <Route path="/charges" element={<Charges />} />
+    </Route>
+  )
+);
+
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
