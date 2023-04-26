@@ -8,7 +8,6 @@
 }
 
 .home,
-.reports,
 .products,
 .charges,
 .print-for-patients,
@@ -20,6 +19,46 @@
   font-size: 3rem;
   background-color: #000;
   color: #fff;
+}
+
+.reports {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  background-color: #000;
+  color: #fff;
+}
+
+.reports-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.reports-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+}
+
+.reports-left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.reports-right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.reports-input-field-container {
+  display: flex;
+  width: 100%;
 }
 
 /* Navbar CSS */
