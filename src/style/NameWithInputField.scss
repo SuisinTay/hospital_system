@@ -1,0 +1,64 @@
+@mixin mobile-screen {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+.name-with {
+  &-input {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    width: 43%;
+
+    @include mobile-screen {
+      margin: 0;
+      margin-left: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &-textfield {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    width: 100%;
+
+    @include mobile-screen {
+      margin: 0;
+      margin-left: 1rem;
+      margin-bottom: 0.5rem;
+      width: 90%;
+    }
+  }
+}
+
+.inputfield {
+  height: 2.5rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+  color: white;
+  font-size: 24px;
+
+  @include mobile-screen {
+    margin-top: 0.5rem;
+    font-size: 16px;
+    height: 1.8rem;
+  }
+}
+
+.textfield {
+  height: 10rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  color: white;
+  font-size: 24px;
+  resize: none;
+
+  @include mobile-screen {
+    margin-top: 0.5rem;
+    font-size: 16px;
+  }
+}

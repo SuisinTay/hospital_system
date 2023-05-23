@@ -7,7 +7,6 @@ const Reports = () => {
   React.useEffect(() => fetchApiData(), []);
 
   const fetchApiData = () => {
-    console.log("heellooo");
     fetch(
       "http://office.panda-eco.com:53008/operation_record/ts_OperationRecord/"
     )

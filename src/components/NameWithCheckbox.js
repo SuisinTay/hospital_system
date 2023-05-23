@@ -1,9 +1,9 @@
 import React from "react";
-import "../style/NameWithCheckbox.css";
+import "../style/NameWithCheckbox.scss";
 
 const NameWithCheckbox = ({ title, is_checked }) => (
   <div className="name-with-checkbox">
-    <span>{title}</span>
+    <span className="checkbox-title">{title}</span>
     <input
       className="checkbox"
       disabled

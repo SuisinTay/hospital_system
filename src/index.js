@@ -14,7 +14,7 @@ import PrintForPatients from "./routes/PrintForPatients";
 import Products from "./routes/Products";
 import Reports from "./routes/Reports";
 import Navbar from "./components/Navbar";
-import "./App.css";
+import "./App.scss";
 
 const AppLayout = () => (
   <React.Fragment>
