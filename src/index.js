@@ -13,6 +13,7 @@ import OperationRecords from "./routes/OperationRecords";
 import PrintForPatients from "./routes/PrintForPatients";
 import Products from "./routes/Products";
 import Reports from "./routes/Reports";
+import UserListReports from "./routes/UserListReports";
 import Navbar from "./components/Navbar";
 import "./App.scss";
 
@@ -28,7 +29,8 @@ const router = createBrowserRouter(
     <Route element={<AppLayout />}>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/reports" element={<Reports />} />
+      <Route path="/reports/:itemId" element={<Reports />} />
+      <Route path="/userlist_reports" element={<UserListReports />} />
       <Route path="/print_for_patients" element={<PrintForPatients />} />
       <Route path="/operation_records" element={<OperationRecords />} />
       <Route path="/charges" element={<Charges />} />

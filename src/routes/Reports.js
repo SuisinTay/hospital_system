@@ -1,10 +1,14 @@
 import React from "react";
 import NameWithInputField from "../components/NameWithInputField";
 import NameWithCheckbox from "../components/NameWithCheckbox";
+import { useLocation } from "react-router";
 
 const Reports = () => {
+  const location = useLocation();
+  const item_number = location.state?.index;
+
   const [data, setData] = React.useState(null);
-  const [report_number, setReportNumber] = React.useState(0);
+  const [report_number, setReportNumber] = React.useState(item_number);
   React.useEffect(() => fetchApiData(), []);
 
   const fetchApiData = () => {
@@ -13,7 +17,6 @@ const Reports = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const { results } = data;
         setData(results);
       })

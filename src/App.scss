@@ -26,6 +26,53 @@
   color: #fff;
 }
 
+.userlist_report {
+  background-color: rgb(221, 221, 221);
+  height: 100%;
+
+  &--header {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  &--card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    background-color: rgb(248, 227, 227);
+    margin: 1rem 2rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+
+    @include mobile-screen {
+      height: 7rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(255, 186, 186);
+    }
+
+    &_name {
+      font-size: 20px;
+
+      @include mobile-screen {
+        font-size: 16px;
+      }
+    }
+
+    &_information {
+      margin-right: 2rem;
+
+      @include mobile-screen {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
 .reports {
   display: flex;
   flex-direction: column;
