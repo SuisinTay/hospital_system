@@ -1,3 +1,9 @@
+@mixin mobile-screen {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
 .name-with-checkbox {
   display: flex;
   flex-direction: row;
@@ -5,6 +11,10 @@
   width: 43%;
   justify-content: space-between;
   align-items: center;
+
+  @include mobile-screen {
+    margin: 0.5rem 0 1rem 1rem;
+  }
 }
 
 .checkbox {

@@ -80,6 +80,53 @@
     display: flex;
     width: 100%;
   }
+
+  &-footer_button {
+    position: sticky;
+    height: 5rem;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+
+    &_container {
+      display: flex;
+      justify-content: end;
+      width: 97%;
+
+      @include mobile-screen {
+        justify-content: space-around;
+        width: 100%;
+      }
+    }
+
+    button {
+      width: 6rem;
+      height: 2.5rem;
+      font-size: 18px;
+      color: white;
+      background-color: rgb(255, 82, 55);
+      border: 2px solid black;
+      border-radius: 0.3rem;
+      margin: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+      &:disabled {
+        background-color: rgb(138, 138, 138);
+        cursor: auto;
+      }
+
+      @include mobile-screen {
+        width: 5rem;
+        height: 1.5rem;
+        font-size: 12px;
+      }
+    }
+
+    @include mobile-screen {
+      height: 3rem;
+    }
+  }
 }
 
 /* Navbar CSS */
