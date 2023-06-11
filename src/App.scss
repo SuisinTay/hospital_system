@@ -71,6 +71,23 @@
       }
     }
   }
+
+  &-add_user_button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 186, 186);
+    color: black;
+    border: solid 2px black;
+    border-radius: 2rem;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 }
 
 .reports {
@@ -172,6 +189,83 @@
 
     @include mobile-screen {
       height: 3rem;
+    }
+  }
+}
+
+/*Modal CSS*/
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  max-width: 90%;
+  border-radius: 4px;
+  z-index: 9999;
+
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+  }
+
+  &-content {
+    padding: 20px;
+    background-color: #fff;
+    height: 90vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      background-color: transparent;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .submit {
+    &-container {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+    }
+    &-button {
+      width: 6rem;
+      height: 2.5rem;
+      font-size: 18px;
+      color: white;
+      background-color: rgb(255, 82, 55);
+      border: 2px solid black;
+      border-radius: 0.3rem;
+      margin: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+      &:disabled {
+        background-color: rgb(138, 138, 138);
+        cursor: auto;
+      }
+
+      @include mobile-screen {
+        width: 5rem;
+        height: 1.5rem;
+        font-size: 12px;
+      }
     }
   }
 }

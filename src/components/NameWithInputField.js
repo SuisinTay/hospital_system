@@ -1,14 +1,35 @@
 import React from "react";
 import "../style/NameWithInputField.scss";
 
-const NameWithInputField = ({ title, is_textfield, patients_data }) => {
+let data = {};
+
+const NameWithInputField = ({
+  id,
+  title,
+  is_required,
+  is_textfield,
+  patients_data,
+  is_disabled,
+}) => {
   return (
     <div className={is_textfield ? "name-with-textfield" : "name-with-input"}>
       <span className="inputfield-title">{title}</span>
       {is_textfield ? (
-        <textarea className="textfield" disabled value={patients_data} />
+        <textarea
+          id={id}
+          className="textfield"
+          disabled={is_disabled}
+          value={patients_data}
+          required={is_required}
+        />
       ) : (
-        <input className={"inputfield"} disabled value={patients_data}></input>
+        <input
+          id={id}
+          className={"inputfield"}
+          disabled={is_disabled}
+          value={patients_data}
+          required={is_required}
+        ></input>
       )}
     </div>
   );

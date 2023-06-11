@@ -1,12 +1,13 @@
 import React from "react";
 import "../style/NameWithCheckbox.scss";
 
-const NameWithCheckbox = ({ title, is_checked }) => (
+const NameWithCheckbox = ({ id, title, is_checked, is_disabled }) => (
   <div className="name-with-checkbox">
     <span className="checkbox-title">{title}</span>
     <input
+      id={id}
       className="checkbox"
-      disabled
+      disabled={is_disabled}
       defaultChecked={is_checked}
       type="checkbox"
     />
