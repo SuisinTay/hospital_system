@@ -10,16 +10,22 @@ const Reports = () => {
   const [data, setData] = React.useState(null);
   const [report_number, setReportNumber] = React.useState(item_number);
   const [is_disabled, setIsDisabled] = React.useState(true);
+  const [nextUrl, setNextUrl] = React.useState("");
+  const [prevUrl, setPrevUrl] = React.useState("");
+
   React.useEffect(() => fetchApiData(), []);
 
-  const fetchApiData = () => {
+  const fetchApiData = (url) => {
     fetch(
-      "http://office.panda-eco.com:53008/operation_record/ts_OperationRecord/"
+      url ||
+        "http://office.panda-eco.com:53008/operation_record/ts_OperationRecord/"
     )
       .then((response) => response.json())
       .then((data) => {
-        const { results } = data;
+        const { results, next, previous } = data;
+        setNextUrl(next);
         setData(results);
+        setPrevUrl(previous);
       })
       .catch((err) => {
         console.log("Somethings not right", err);
@@ -27,11 +33,23 @@ const Reports = () => {
   };
 
   const nextButton = () => {
-    setReportNumber(report_number + 1);
+    if (data.length === report_number + 1) {
+      fetchApiData(nextUrl);
+      setReportNumber(0);
+      console.log(report_number);
+      return;
+    } else {
+      setReportNumber(report_number + 1);
+    }
   };
 
   const prevButton = () => {
-    if (report_number === 0) {
+    console.log(prevUrl);
+    if (report_number === 0 && !!prevUrl) {
+      fetchApiData(prevUrl);
+      setReportNumber(data.length - 1);
+      return;
+    } else if (report_number === 0) {
       setReportNumber(0);
     } else {
       setReportNumber(report_number - 1);
@@ -336,7 +354,10 @@ const Reports = () => {
               </button>
             </div>
             {is_disabled && (
-              <button disabled={report_number === 0} onClick={prevButton}>
+              <button
+                disabled={report_number === 0 && !prevUrl}
+                onClick={prevButton}
+              >
                 Previous
               </button>
             )}
