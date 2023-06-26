@@ -43,7 +43,6 @@ const Reports = () => {
   };
 
   const prevButton = () => {
-    console.log(prevUrl);
     if (report_number === 0 && !!prevUrl) {
       fetchApiData(prevUrl);
       setReportNumber(data.length - 1);
