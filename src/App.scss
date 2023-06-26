@@ -28,7 +28,13 @@
 
 .userlist_report {
   background-color: rgb(221, 221, 221);
-  height: 100%;
+  height: 100vh;
+
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0; /* Remove the default scrollbar width */
+    background-color: transparent; /* Set the scrollbar background color */
+  }
 
   &--header {
     text-align: center;

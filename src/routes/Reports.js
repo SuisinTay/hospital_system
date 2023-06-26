@@ -36,7 +36,6 @@ const Reports = () => {
     if (data.length === report_number + 1) {
       fetchApiData(nextUrl);
       setReportNumber(0);
-      console.log(report_number);
       return;
     } else {
       setReportNumber(report_number + 1);
