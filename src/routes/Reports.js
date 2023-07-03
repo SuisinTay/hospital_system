@@ -5,7 +5,8 @@ import { useLocation } from "react-router";
 
 const Reports = () => {
   const location = useLocation();
-  const item_number = location.state?.index;
+  const item_number = location.state?.new_index;
+  const props_url = location.state?.nextUrl;
 
   const [data, setData] = React.useState(null);
   const [report_number, setReportNumber] = React.useState(item_number);
@@ -13,19 +14,28 @@ const Reports = () => {
   const [nextUrl, setNextUrl] = React.useState("");
   const [prevUrl, setPrevUrl] = React.useState("");
 
-  React.useEffect(() => fetchApiData(), []);
+  const panda_url =
+    "http://office.panda-eco.com:53008/operation_record/ts_OperationRecord/";
+
+  React.useEffect(() => {
+    if (props_url) {
+      fetchApiData(props_url);
+    } else {
+      fetchApiData();
+    }
+  }, []);
 
   const fetchApiData = (url) => {
-    fetch(
-      url ||
-        "http://office.panda-eco.com:53008/operation_record/ts_OperationRecord/"
-    )
+    fetch(url ?? panda_url)
       .then((response) => response.json())
       .then((data) => {
         const { results, next, previous } = data;
         setNextUrl(next);
-        setData(results);
+        setData((prevData) => (prevData ? [...prevData, ...results] : results));
         setPrevUrl(previous);
+        if (nextUrl) {
+          fetchApiData(nextUrl);
+        }
       })
       .catch((err) => {
         console.log("Somethings not right", err);

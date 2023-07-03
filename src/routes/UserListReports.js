@@ -30,7 +30,13 @@ const UserListReports = () => {
       .then((response) => response.json())
       .then((data) => {
         const { results, next } = data;
-        setData((prevData) => (prevData ? [...prevData, ...results] : results));
+        const updated_result = results.map((result) => ({
+          ...result,
+          nextUrl,
+        }));
+        setData((prevData) =>
+          prevData ? [...prevData, ...updated_result] : updated_result
+        );
         setNextUrl(next);
       })
       .catch((err) => {
@@ -67,8 +73,10 @@ const UserListReports = () => {
     }
   };
 
-  const handleCardClick = (guid, index) => {
-    navigate(`/reports/${guid}`, { state: { index } });
+  const handleCardClick = (guid, index, nextUrl) => {
+    const array_length = 20;
+    const new_index = index % array_length;
+    navigate(`/reports/${guid}`, { state: { new_index, nextUrl } });
   };
 
   const closeModal = () => {
@@ -218,7 +226,7 @@ const UserListReports = () => {
           data.map((item, index) => {
             return (
               <div
-                onClick={() => handleCardClick(item.guid, index)}
+                onClick={() => handleCardClick(item.guid, index, item.nextUrl)}
                 className="userlist_report--card"
                 key={index}
               >
